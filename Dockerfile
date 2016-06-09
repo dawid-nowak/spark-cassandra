@@ -1,9 +1,9 @@
 # vim:set ft=dockerfile:
 FROM debian:jessie-backports
 
-COPY ./spark-1.6.1-bin-hadoop2.6.tgz /opt
-RUN tar xfz /opt/spark-1.6.1-bin-hadoop2.6.tgz -C /opt
-RUN ln -s /opt/spark-1.6.1-bin-hadoop2.6 /opt/spark-latest
+COPY ./spark-1.6.0-bin-hadoop2.6.tgz /opt
+RUN tar xfz /opt/spark-1.6.0-bin-hadoop2.6.tgz -C /opt
+RUN ln -s /opt/spark-1.6.0-bin-hadoop2.6 /opt/spark-latest
 COPY ./spark-conf/* /opt/spark-latest/conf/
 RUN rm /opt/*gz
 
@@ -33,7 +33,10 @@ ENV CASSANDRA_VERSION 3.5
 
 RUN apt-get update \
 	&& apt-get install -y cassandra="$CASSANDRA_VERSION" \
+	&& apt-get install -y netbase net-tools netcat iputils-ping emacs-nox vim-tiny \
 	&& rm -rf /var/lib/apt/lists/*
+
+
 
 # https://issues.apache.org/jira/browse/CASSANDRA-11661
 RUN sed -ri 's/^(JVM_PATCH_VERSION)=.*/\1=25/' /etc/cassandra/cassandra-env.sh

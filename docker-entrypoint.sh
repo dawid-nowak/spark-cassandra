@@ -56,6 +56,10 @@ if [ "$1" = 'cassandra' ]; then
 	
 	sed -ri 's/(- seeds:) "127.0.0.1"/\1 "'"$CASSANDRA_SEEDS"'"/' "$CASSANDRA_CONFIG/cassandra.yaml"
 
+	#Dawid
+        sed -ri '/#MAX_HEAP_SIZE="4G"/c\MAX_HEAP_SIZE="1G"' "$CASSANDRA_CONFIG/cassandra-env.sh"
+	sed -ri '/#HEAP_NEWSIZE="800M"/c\HEAP_NEWSIZE="600M"' "$CASSANDRA_CONFIG/cassandra-env.sh"
+	
 	for yaml in \
 		broadcast_address \
 		broadcast_rpc_address \
