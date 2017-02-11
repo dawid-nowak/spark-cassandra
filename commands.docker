@@ -1,0 +1,11 @@
+
+docker-compose --project-name spark-cassandra build
+docker-compose --project-name spark-cassandra up -d
+docker-compose --project-name spark-cassandra scale spark-cassandra-slave=3
+docker-compose --project-name spark-cassandra stop/kill
+
+docker exec -it spark-cassandra-master  /bin/bash
+docker run -it --rm --entrypoint="" --network=35cebfe106b8 spark-cassandra-master:2.1 sh -c 'exec nodetool -h "172.20.0.3" ring'
+docker run -it --entrypoint="" --network=35cebfe106b8 spark-cassandra-master:2.1 sh -c 'exec cqlsh "172.20.0.3"'
+
+docker rm $(docker ps -a -q)

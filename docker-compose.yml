@@ -1,0 +1,17 @@
+version: '2'
+services:    
+  spark-cassandra-master:
+    build: .
+    container_name: spark-cassandra-master
+    entrypoint: /opt/bootstrap-master.sh
+    command: cassandra -f
+    image: spark-cassandra-master:2.1
+    
+  spark-cassandra-slave:
+    build: .
+    image: spark-cassandra-slave:2.1
+    entrypoint: /opt/bootstrap-slave.sh
+    command: cassandra -f
+    depends_on:
+      - spark-cassandra-master
+
