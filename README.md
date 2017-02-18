@@ -24,7 +24,6 @@ docker-compose --project-name spark-cassandra scale spark-cassandra-node=3
 # running with docker
 Following commands should do the trick assuming that you have a docker network called **spark_default** created
 ```
-docker volume create spark-shared
 docker run -d --rm  --network sparkcassandra_default -e "SPARK_MODE=master"  --name spark-master dawidnowak/spark-cassandra:2.1
 docker run -d --rm  --network sparkcassandra_default --name spark-node1 dawidnowak/spark-cassandra:2.1
 ```
