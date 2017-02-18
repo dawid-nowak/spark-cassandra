@@ -1,17 +1,18 @@
 version: '2'
 services:    
   spark-cassandra-master:
-    build: .
     container_name: spark-cassandra-master
-    entrypoint: /opt/bootstrap-master.sh
     command: cassandra -f
-    image: spark-cassandra-master:2.1
+    image: dawidnowak/spark-cassandra:2.1
+    environment:
+      SPARK_MODE: master
+    mem_limit: 1g
+      
+
     
-  spark-cassandra-slave:
-    build: .
-    image: spark-cassandra-slave:2.1
-    entrypoint: /opt/bootstrap-slave.sh
+  spark-cassandra-node:
+    image: dawidnowak/spark-cassandra:2.1
     command: cassandra -f
     depends_on:
       - spark-cassandra-master
-
+    mem_limit: 1g
