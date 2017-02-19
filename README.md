@@ -30,12 +30,12 @@ docker run -d --rm  --network sparkcassandra_default -e "CASSANDRA_SEEDS=spark-c
 ```
 
 # checking your deployment
-Cassandra
+Execute nodetool to check the status of your Apache Cassandra cluster: 
 ```
 docker exec -ti spark-cassandra-master nodetool status
 
 ```
-Spark Web Console can be accessed at 
+Spark Web Console can be accessed at :
 ```
 firefox http://<<spark-master-cassandra>>:8080
 ```
