@@ -52,7 +52,7 @@
 # - SPARK_WORKER_CORES, to set the number of cores to use on this machine
 SPARK_WORKER_CORES=2
 # - SPARK_WORKER_MEMORY, to set how much total memory workers have to give executors (e.g. 1000m, 2g)
-SPARK_WORKER_MEMORY=2g
+SPARK_WORKER_MEMORY=1g
 # - SPARK_WORKER_PORT / SPARK_WORKER_WEBUI_PORT, to use non-default ports for the worker
 # - SPARK_WORKER_INSTANCES, to set the number of worker processes per node
 # - SPARK_WORKER_DIR, to set the working directory of worker processes

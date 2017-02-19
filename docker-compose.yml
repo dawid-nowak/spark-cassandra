@@ -6,13 +6,16 @@ services:
     image: dawidnowak/spark-cassandra:2.1
     environment:
       SPARK_MODE: master
-    mem_limit: 1g
+      CASSANDRA_SEEDS: spark-cassandra-master
+    mem_limit: 2g
       
 
     
   spark-cassandra-node:
     image: dawidnowak/spark-cassandra:2.1
     command: cassandra -f
+    environment:
+      CASSANDRA_SEEDS: spark-cassandra-master
     depends_on:
       - spark-cassandra-master
-    mem_limit: 1g
+    mem_limit: 2g
