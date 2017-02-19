@@ -11,4 +11,11 @@ else
     /opt/spark-latest/sbin/start-slave.sh spark-cassandra-master:7077  
 fi
 
+if [ -z $CASSANDRA_SEEDS ]
+then
+    export CASSANDRA_SEEDS=spark-cassandra-master
+else
+    echo "Seeds set to " $CASSANDRA_SEEDS
+fi
+
 ./docker-entrypoint-cassandra.sh "$@"
