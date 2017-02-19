@@ -3,7 +3,7 @@ Dockerized Apache Spark + Cassandra
 
 This allows running Apache Spark Standalone co-resident with Apache Cassandra Distributed Database.
 
-The image is based on https://hub.docker.com/_/cassandra/ with some additions to get Apache Spark running
+The image is based on https://hub.docker.com/_/cassandra/ with some additions to get Apache Spark running.
 
 # running with compose
 Ideally you would run it using docker compose ( see yml file provided). This will ensure that you start master and a worker node on the same network so they can see each other.
@@ -29,7 +29,7 @@ docker run -d --rm  --network sparkcassandra_default -e "SPARK_MODE=master" -e "
 docker run -d --rm  --network sparkcassandra_default -e "CASSANDRA_SEEDS=spark-cassandra-master" --name spark-node1 dawidnowak/spark-cassandra:2.1
 ```
 
-#checking your deployment
+# checking your deployment
 Cassandra
 ```
 docker exec -ti spark-cassandra-master nodetool status
